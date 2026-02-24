@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kapda Dekho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --white:#ffffff;
+      --accent:#ff3d81;
+      --accent2:#00e0ff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+
+    body{
+      background:#000;
+      color:var(--white);
+      overflow-x:hidden;
+    }
+
+    .announcement{
+      background:#000;
+      color:#fff;
+      text-align:center;
+      padding:8px;
+      font-size:14px;
+      letter-spacing:1px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      padding:18px 40px;
+      background:#0f0f0f;
+      position:sticky;
+      top:0;
+      z-index:10;
+      border-bottom:1px solid rgba(255,61,129,0.3);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:var(--accent);
+    }
+
+    .nav-center{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      gap:35px;
+      font-weight:500;
+      font-size:15px;
+    }
+
+    .nav-center a{
+      text-decoration:none;
+      color:var(--accent);
+    }
+
+    .nav-center a:hover{color:var(--accent2);}
+
+    .nav-icons{
+      display:flex;
+      gap:22px;
+      font-size:18px;
+    }
+
+    .hero{
+      position:relative;
+      height:85vh;
+      display:flex;
+      align-items:center;
+      padding:0 60px;
+      overflow:hidden;
+    }
+
+    .hero img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:1;
+      transition:opacity 0.6s ease;
+    }
+
+    .hero-content{
+      position:relative;
+      max-width:600px;
+      z-index:2;
+    }
+
+    .hero h2{
+      font-size:64px;
+      line-height:1.1;
+      margin:15px 0;
+    }
+
+    .hero h2 span{color:var(--accent);}
+
+    .hero p{
+      font-size:18px;
+      opacity:0.9;
+      margin-bottom:30px;
+    }
+
+    .shop-circle{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#000;
+      text-decoration:none;
+      text-align:center;
+      box-shadow:0 0 40px rgba(255,61,129,0.6);
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-12px)}
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:20px;
+      background:var(--accent);
+      color:#000;
+      padding:25px 40px;
+      font-weight:600;
+      text-align:center;
+    }
+
+    .cta{
+      text-align:center;
+      padding:60px 20px;
+      background:#000;
+    }
+
+    .cta a{
+      display:inline-block;
+      padding:14px 34px;
+      border-radius:30px;
+      background:var(--accent);
+      color:#000;
+      font-weight:700;
+      text-decoration:none;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      opacity:0.6;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="announcement">
+  KAPDA20 FOR 20% OFF • FREE SHIPPING ON ORDERS OVER ₹999 • NEW ARRIVALS EVERY WEEK • USE CODE: KAPDA20
+</div>
+
+<header>
+  <div class="logo">KAPDA DEKHO</div>
+
+  <div class="nav-center">
+    <a href="#">NEW ARRIVALS</a>
+    <a href="men.html">MEN</a>
+    <a href="women.html">WOMEN</a>
+  </div>
+
+  <div class="nav-icons">
+    <span>🔍</span>
+    <span>♡</span>
+    <span>👤</span>
+    <span>👜</span>
+  </div>
+</header>
+
+<section class="hero">
+  <img id="hero-img" src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Streetwear">
+
+  <div class="hero-content">
+    <span style="color:var(--accent);letter-spacing:3px">NEW COLLECTION 2025</span>
+    <h2><span>WEAR THE NOISE</span></h2>
+    <p>Premium streetwear for the bold and unapologetic.</p>
+    <a href="#" class="shop-circle">SHOP<br>NOW</a>
+  </div>
+</section>
+
+<script>
+  const images = [
+    "https://images.unsplash.com/photo-1520975916090-3105956dac38",
+    "https://images.unsplash.com/photo-1521335629791-ce4aec67dd47",
+    "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c",
+    "https://images.unsplash.com/photo-1512436991641-6745cdb1723f",
+    "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+    "https://images.unsplash.com/photo-1520974735194-6c4a4f7b8d1f"
+  ];
+
+  let index = 0;
+  const heroImg = document.getElementById("hero-img");
+
+  setInterval(() => {
+    index = (index + 1) % images.length;
+    heroImg.style.opacity = 0;
+    setTimeout(() => {
+      heroImg.src = images[index];
+      heroImg.style.opacity = 1;
+    }, 600);
+  }, 4000);
+</script>
+
+<section class="features">
+  <div>FREE SHIPPING<br><small>On orders over ₹999</small></div>
+  <div>SECURE PAYMENT<br><small>100% secure checkout</small></div>
+  <div>EASY RETURNS<br><small>30-day return policy</small></div>
+  <div>PREMIUM QUALITY<br><small>100% organic cotton</small></div>
+</section>
+
+<section class="cta">
+  <h2 style="font-size:42px;margin-bottom:15px">Explore Our Collection</h2>
+  <p style="opacity:0.8;margin-bottom:30px">Men & Women premium streetwear</p>
+  <a href="#">SHOP ALL PRODUCTS →</a>
+</section>
+
+<footer>
+  © 2026 Kapda Dekho · Demo Ecommerce Project
+</footer>
+
+</body>
+</html>

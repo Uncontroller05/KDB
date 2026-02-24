@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Women | Kapda Dekho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black:#0f0f0f;
+      --white:#ffffff;
+      --accent:#ff3d81;
+      --accent2:#00e0ff;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+
+    body{
+      background:#000;
+      color:var(--white);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      padding:18px 40px;
+      background:#0f0f0f;
+      position:sticky;
+      top:0;
+      border-bottom:1px solid rgba(255,61,129,0.3);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:var(--accent);
+    }
+
+    .nav-center{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      gap:35px;
+      font-size:15px;
+    }
+
+    .nav-center a{
+      text-decoration:none;
+      color:var(--accent);
+    }
+
+    .nav-center a:hover{color:var(--accent2);}
+
+    .women-hero{
+      height:45vh;
+      background:url("https://images.unsplash.com/photo-1520975867597-0f3c1a6b2c99") center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .women-hero h1{
+      font-size:64px;
+      color:var(--accent);
+    }
+
+    .women-section{
+      padding:80px 60px;
+    }
+
+    .women-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:30px;
+    }
+
+    .product-card{
+      background:#0f0f0f;
+      border-radius:16px;
+      padding:15px;
+      text-align:center;
+      transition:transform 0.3s ease;
+    }
+
+    .product-card:hover{transform:translateY(-8px)}
+
+    .product-card img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      border-radius:12px;
+      margin-bottom:15px;
+    }
+
+    .product-card h3{
+      font-size:18px;
+      margin-bottom:6px;
+    }
+
+    .product-card p{
+      color:var(--accent2);
+      font-weight:600;
+    }
+
+    footer{
+      text-align:center;
+      padding:20px;
+      opacity:0.6;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">KAPDA DEKHO</div>
+
+  <div class="nav-center">
+    <a href="index.html">HOME</a>
+    <a href="men.html">MEN</a>
+    <a href="women.html">WOMEN</a>
+  </div>
+</header>
+
+<section class="women-hero">
+  <h1>WOMEN</h1>
+</section>
+
+<section class="women-section">
+  <div class="women-grid">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1520975867597-0f3c1a6b2c99">
+      <h3>Oversized Tee</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb">
+      <h3>Cropped Hoodie</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43">
+      <h3>Street Jacket</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1495121605193-b116b5b09a4c">
+      <h3>Graphic Tee</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+      <h3>Relaxed Shirt</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b">
+      <h3>Street Dress</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446">
+      <h3>Cargo Skirt</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c">
+      <h3>Layered Tee</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1500336624523-d727130c3328">
+      <h3>Street Top</h3>
+      <p>₹599</p>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d">
+      <h3>Urban Hoodie</h3>
+      <p>₹599</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Kapda Dekho
+</footer>
+
+</body>
+</html>

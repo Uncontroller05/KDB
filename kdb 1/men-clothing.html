@@ -1,0 +1,997 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Men Clothing | Kapda Dekho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fbf8f4;
+      --surface:#ffffff;
+      --surface-2:#f4efe8;
+      --ink:#1f1f1f;
+      --muted:#6c6c6c;
+      --accent:#e76b6b;
+      --accent-2:#f1b25b;
+      --accent-3:#7cc5b8;
+      --border:#e7e1d9;
+      --shadow:0 14px 40px rgba(28, 28, 28, 0.08);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+
+    body{
+      font-family:'Montserrat',sans-serif;
+      color:var(--ink);
+      background:radial-gradient(circle at 10% 10%, #fff1e3 0%, transparent 55%),
+                 radial-gradient(circle at 90% 20%, #e9f7f5 0%, transparent 50%),
+                 var(--bg);
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .announcement{
+      background:linear-gradient(90deg, #f8d3c4, #f7e8c6, #dff2ee);
+      color:#2f2f2f;
+      text-align:center;
+      padding:10px 16px;
+      font-size:13px;
+      letter-spacing:0.6px;
+      font-weight:600;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(251, 248, 244, 0.9);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-wrap{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      padding:18px 40px;
+    }
+
+    .logo{
+      font-family:'Playfair Display',serif;
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    .nav-center{
+      display:flex;
+      gap:28px;
+      font-weight:600;
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .nav-center a{
+      padding-bottom:4px;
+      border-bottom:2px solid transparent;
+    }
+
+    .nav-center a:hover{border-color:var(--accent)}
+
+    .nav-right{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .search{
+      position:relative;
+      width:260px;
+    }
+
+    .search input{
+      width:100%;
+      border:1px solid var(--border);
+      padding:10px 38px 10px 14px;
+      border-radius:24px;
+      background:#fff;
+      font-size:14px;
+    }
+
+    .search span{
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:16px;
+      color:var(--muted);
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .icon-btn{
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--surface);
+      border:1px solid var(--border);
+      cursor:pointer;
+    }
+
+    .account-wrap{
+      position:relative;
+    }
+
+    .account-menu{
+      position:absolute;
+      right:0;
+      top:48px;
+      width:220px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(28, 28, 28, 0.12);
+      padding:12px;
+      display:none;
+      z-index:30;
+    }
+
+    .account-menu.show{display:block}
+
+    .menu-greet{
+      font-style:italic;
+      margin-bottom:8px;
+    }
+
+    .menu-sep{
+      height:1px;
+      background:var(--border);
+      margin:8px 0;
+    }
+
+    .menu-link,
+    .menu-btn{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:8px 10px;
+      border-radius:10px;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      font-size:14px;
+      text-align:left;
+    }
+
+    .menu-link:hover,
+    .menu-btn:hover{background:var(--surface-2)}
+
+    .menu-muted{color:var(--muted)}
+
+    .wishlist-dot{
+      position:absolute;
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--accent);
+      top:6px;
+      right:6px;
+      display:none;
+    }
+
+    .account-text{
+      font-size:12px;
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    .page{
+      padding:24px 40px 60px;
+    }
+
+    .breadcrumb{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:16px;
+    }
+
+    .page-title{
+      font-family:'Playfair Display',serif;
+      font-size:32px;
+      margin-bottom:6px;
+    }
+
+    .page-sub{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:22px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+
+    .filters{
+      position:sticky;
+      top:120px;
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 10px 24px rgba(28, 28, 28, 0.06);
+    }
+
+    .filters h3{
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      margin-bottom:14px;
+    }
+
+    .filter-block{
+      padding:12px 0;
+      border-top:1px solid var(--border);
+    }
+
+    .filter-block:first-of-type{border-top:none}
+
+    .filter-block strong{
+      display:block;
+      font-size:13px;
+      margin-bottom:10px;
+    }
+
+    .filter-block label{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:8px;
+      cursor:pointer;
+    }
+
+    .filter-block input{accent-color:var(--accent)}
+
+    .toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:16px;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .toolbar .count{color:var(--muted);font-size:13px}
+
+    .toolbar select{
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:8px 14px;
+      background:#fff;
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:var(--surface);
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:0 6px 24px rgba(28, 28, 28, 0.06);
+      position:relative;
+    }
+
+    .card img{
+      width:100%;
+      height:240px;
+      object-fit:cover;
+    }
+
+    .tshirt-design{
+      width:100%;
+      height:240px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px;
+      text-align:center;
+      color:#f2f2f2;
+      font-weight:700;
+      font-size:16px;
+      line-height:1.15;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      background:linear-gradient(160deg,#0c0c0c,#1a1a1a);
+    }
+
+    .card-body{
+      padding:14px 16px 18px;
+    }
+
+    .card-body h3{font-size:15px;margin-bottom:6px}
+    .card-body p{color:var(--muted);font-size:13px;margin-bottom:10px}
+    .price{font-weight:700;color:var(--accent)}
+    .tag{
+      display:inline-block;
+      font-size:11px;
+      background:var(--surface-2);
+      padding:4px 8px;
+      border-radius:10px;
+      margin-bottom:8px;
+      color:#6a4f3b;
+      font-weight:600;
+    }
+
+    .wish-btn{
+      position:absolute;
+      top:12px;
+      right:12px;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,0.9);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    .wish-btn.active{
+      background:#ffe1e1;
+      border-color:#ffb3b3;
+    }
+
+
+    .footer{
+      margin-top:50px;
+      padding:30px 40px 60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+      gap:20px;
+      border-top:1px solid var(--border);
+      background:var(--surface);
+    }
+
+    .footer h4{font-size:14px;margin-bottom:10px}
+    .footer a{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+
+    @media (max-width: 980px){
+      .layout{grid-template-columns:1fr}
+      .filters{position:static}
+      .search{display:none}
+    }
+
+    @media (max-width: 640px){
+      .nav-wrap{flex-wrap:wrap;gap:12px}
+      .nav-center{flex-wrap:wrap;gap:14px}
+      .page{padding:20px}
+    }
+
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(20, 20, 20, 0.4);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      z-index:20;
+    }
+
+    .modal.show{display:flex}
+
+    .modal-card{
+      width:min(420px, 100%);
+      background:var(--surface);
+      border-radius:20px;
+      padding:24px;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .modal-header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:16px;
+    }
+
+    .modal-title{
+      font-family:'Playfair Display',serif;
+      font-size:22px;
+    }
+
+    .close-btn{
+      background:transparent;
+      border:none;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .tabs{
+      display:flex;
+      gap:8px;
+      margin-bottom:16px;
+    }
+
+    .tab{
+      flex:1;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:var(--surface-2);
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .tab.active{
+      background:#fff;
+      border-color:var(--accent);
+      color:var(--accent);
+    }
+
+    .form{
+      display:grid;
+      gap:12px;
+    }
+
+    .form label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .form input{
+      width:100%;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      font-size:14px;
+      background:#fff;
+    }
+
+    .form button{
+      margin-top:4px;
+      padding:12px;
+      border-radius:14px;
+      border:none;
+      background:var(--ink);
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .google-btn{
+      background:#fff;
+      border:1px solid var(--border);
+      color:var(--ink);
+    }
+
+    .helper{
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="announcement">FREE SHIPPING ABOVE Rs 399 · EASY RETURNS · NEW ARRIVALS DAILY</div>
+
+  <header>
+    <div class="nav-wrap">
+      <a class="logo" href="index.html">KAPDA DEKHO</a>
+      <nav class="nav-center">
+        <a href="men-clothing.html">Men</a>
+        <a href="women-clothing.html">Women</a>
+      </nav>
+      <div class="nav-right">
+        <div class="search">
+          <input type="text" placeholder="Search tees, hoodies, cargos" />
+          <span>🔍</span>
+        </div>
+        <a class="icon-btn" href="wishlist.html" aria-label="Wishlist" title="Wishlist" style="position:relative;">
+          ♡
+          <span class="wishlist-dot" id="wishlist-dot"></span>
+        </a>
+        <a class="icon-btn" href="order-history.html" aria-label="Orders" title="Orders">🛒</a>
+        <div class="account-wrap">
+          <button class="icon-btn" id="account-btn" aria-label="Account">
+            <span id="account-icon">👤</span>
+            <span id="account-text" class="account-text" style="display:none;">Hi</span>
+          </button>
+          <div class="account-menu" id="account-menu" aria-hidden="true">
+            <div class="menu-greet" id="menu-greet">Hi</div>
+            <div class="menu-sep"></div>
+            <div id="menu-auth">
+              <button class="menu-btn" id="menu-login">Login</button>
+              <button class="menu-btn" id="menu-signup">Sign Up</button>
+              <div class="menu-sep"></div>
+            </div>
+            <a class="menu-link" href="index.html">My Account</a>
+            <a class="menu-link" href="wishlist.html">My Wishlist</a>
+            <a class="menu-link" href="order-history.html">My Orders</a>
+            <a class="menu-link" href="bag.html">My Bag</a>
+            <div class="menu-sep"></div>
+            <button class="menu-btn" id="menu-logout">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="breadcrumb">Home / Men / Clothing</div>
+    <h1 class="page-title">Men Clothing</h1>
+    <p class="page-sub">Trendy menswear with light, pastel vibes for everyday style.</p>
+
+    <section class="layout">
+      <aside class="filters">
+        <h3>Filters</h3>
+        <div class="filter-block">
+          <strong>Category</strong>
+          <label><input type="checkbox" checked> Oversized T-Shirts</label>
+          <label><input type="checkbox"> Hoodies</label>
+          <label><input type="checkbox"> Joggers</label>
+          <label><input type="checkbox"> Shirts</label>
+          <label><input type="checkbox"> Co-ords</label>
+        </div>
+        <div class="filter-block">
+          <strong>Size</strong>
+          <label><input type="checkbox"> S</label>
+          <label><input type="checkbox"> M</label>
+          <label><input type="checkbox"> L</label>
+          <label><input type="checkbox"> XL</label>
+          <label><input type="checkbox"> XXL</label>
+        </div>
+        <div class="filter-block">
+          <strong>Color</strong>
+          <label><input type="checkbox"> Sand</label>
+          <label><input type="checkbox"> Sage</label>
+          <label><input type="checkbox"> Ice Blue</label>
+          <label><input type="checkbox"> Blush</label>
+          <label><input type="checkbox"> Ivory</label>
+        </div>
+        <div class="filter-block">
+          <strong>Price</strong>
+          <label><input type="checkbox"> Under Rs 599</label>
+          <label><input type="checkbox"> Rs 600 - 999</label>
+          <label><input type="checkbox"> Rs 1000 - 1499</label>
+          <label><input type="checkbox"> Rs 1500+</label>
+        </div>
+      </aside>
+
+      <section>
+        <div class="toolbar">
+          <div class="count">Showing 24 products</div>
+          <select>
+            <option>Sort by: Popularity</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest</option>
+          </select>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="tshirt-design">
+              STOP TRYING<br>
+              TO BE LIKED BY<br>
+              EVERYBODY<br><br>
+              YOU DON’T<br>
+              EVEN LIKE<br>
+              EVERYBODY
+            </div>
+            <div class="card-body">
+              <span class="tag">Statement</span>
+              <h3>Statement Tee</h3>
+              <p>Bold text print</p>
+              <div class="price">Rs 599</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1520974735194-6c4a4f7b8d1f?q=80&w=900&auto=format&fit=crop" alt="Sage Tee" />
+            <div class="card-body">
+              <span class="tag">Best Seller</span>
+              <h3>Sage Oversized Tee</h3>
+              <p>Soft cotton, relaxed fit</p>
+              <div class="price">Rs 599</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=900&auto=format&fit=crop" alt="Ivory Hoodie" />
+            <div class="card-body">
+              <span class="tag">Trending</span>
+              <h3>Ivory Zip Hoodie</h3>
+              <p>Layer-ready fleece</p>
+              <div class="price">Rs 899</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=900&auto=format&fit=crop" alt="City Cargos" />
+            <div class="card-body">
+              <span class="tag">New Drop</span>
+              <h3>City Cargo Pants</h3>
+              <p>Utility with a soft touch</p>
+              <div class="price">Rs 999</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=900&auto=format&fit=crop" alt="Sand Shirt" />
+            <div class="card-body">
+              <span class="tag">Lightweight</span>
+              <h3>Sand Resort Shirt</h3>
+              <p>Breathable linen blend</p>
+              <div class="price">Rs 1099</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=900&auto=format&fit=crop" alt="Ribbed Tee" />
+            <div class="card-body">
+              <span class="tag">Everyday</span>
+              <h3>Ribbed Crew Tee</h3>
+              <p>Perfect for layering</p>
+              <div class="price">Rs 499</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1520975869011-2a9f4a6f9d9d?q=80&w=900&auto=format&fit=crop" alt="Light Joggers" />
+            <div class="card-body">
+              <span class="tag">Soft Touch</span>
+              <h3>Cloud Joggers</h3>
+              <p>Ultra-soft knit</p>
+              <div class="price">Rs 799</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=900&auto=format&fit=crop" alt="Knit Sweater" />
+            <div class="card-body">
+              <span class="tag">Cozy</span>
+              <h3>Warm Knit Sweater</h3>
+              <p>Textured for winter</p>
+              <div class="price">Rs 1199</div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" alt="Denim Jacket" />
+            <div class="card-body">
+              <span class="tag">Classic</span>
+              <h3>Sunwash Denim Jacket</h3>
+              <p>Lightweight layering</p>
+              <div class="price">Rs 1299</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <h4>Kapda Dekho</h4>
+      <a href="#">About</a>
+      <a href="#">Careers</a>
+      <a href="#">Stores</a>
+    </div>
+    <div>
+      <h4>Help</h4>
+      <a href="#">Track Order</a>
+      <a href="#">Returns</a>
+      <a href="#">Contact</a>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <a href="#">Men</a>
+      <a href="#">Women</a>
+      <a href="#">Accessories</a>
+    </div>
+    <div>
+      <h4>Follow</h4>
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+      <a href="#">Pinterest</a>
+    </div>
+  </footer>
+
+  <div class="modal" id="account-modal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">Account</div>
+        <button class="close-btn" id="close-modal" aria-label="Close">×</button>
+      </div>
+      <div class="tabs">
+        <button class="tab active" data-tab="login">Login</button>
+        <button class="tab" data-tab="signup">Sign Up</button>
+      </div>
+      <form class="form" id="login-form">
+        <div>
+          <label>Email</label>
+          <input type="email" id="login-email" required />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" id="login-password" required />
+        </div>
+        <button type="submit">Login</button>
+        <button type="button" class="google-btn" id="google-login">Continue with Google</button>
+        <div class="helper">Demo only. No real authentication.</div>
+      </form>
+      <form class="form" id="signup-form" style="display:none;">
+        <div>
+          <label>Name</label>
+          <input type="text" id="signup-name" required />
+        </div>
+        <div>
+          <label>Email</label>
+          <input type="email" id="signup-email" required />
+        </div>
+        <div>
+          <label>Password</label>
+          <input type="password" id="signup-password" required />
+        </div>
+        <button type="submit">Create Account</button>
+        <button type="button" class="google-btn" id="google-signup">Continue with Google</button>
+        <div class="helper">Demo only. No real authentication.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:5000';
+    const accountBtn = document.getElementById('account-btn');
+    const accountModal = document.getElementById('account-modal');
+    const closeModal = document.getElementById('close-modal');
+    const tabs = document.querySelectorAll('.tab');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+    const accountText = document.getElementById('account-text');
+    const accountIcon = document.getElementById('account-icon');
+    const accountMenu = document.getElementById('account-menu');
+    const menuGreet = document.getElementById('menu-greet');
+    const menuAuth = document.getElementById('menu-auth');
+    const menuLogin = document.getElementById('menu-login');
+    const menuSignup = document.getElementById('menu-signup');
+    const menuLogout = document.getElementById('menu-logout');
+    const wishlistDot = document.getElementById('wishlist-dot');
+    let currentUser = null;
+    const WISHLIST_KEY = 'kd_wishlist';
+
+    function openModal(){
+      accountModal.classList.add('show');
+      accountModal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModalFn(){
+      accountModal.classList.remove('show');
+      accountModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function toggleMenu(force){
+      const show = typeof force === 'boolean' ? force : !accountMenu.classList.contains('show');
+      accountMenu.classList.toggle('show', show);
+      accountMenu.setAttribute('aria-hidden', show ? 'false' : 'true');
+    }
+
+    function setTab(name){
+      tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.tab === name));
+      loginForm.style.display = name === 'login' ? 'grid' : 'none';
+      signupForm.style.display = name === 'signup' ? 'grid' : 'none';
+    }
+
+    function setAccountUI(user){
+      currentUser = user || null;
+      if(currentUser){
+        accountIcon.style.display = 'none';
+        accountText.style.display = 'inline';
+        accountText.textContent = `Hi, ${currentUser.name || 'User'}`;
+        menuGreet.textContent = `Hi, ${currentUser.name || 'User'}`;
+        menuAuth.style.display = 'none';
+        menuLogout.style.display = 'flex';
+      }else{
+        accountIcon.style.display = 'inline';
+        accountText.style.display = 'none';
+        menuGreet.textContent = 'Hi';
+        menuAuth.style.display = 'block';
+        menuLogout.style.display = 'none';
+      }
+    }
+
+    function getWishlist(){
+      return JSON.parse(localStorage.getItem(WISHLIST_KEY) || '[]');
+    }
+
+    function saveWishlist(items){
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(items));
+      if(wishlistDot){
+        wishlistDot.style.display = items.length ? 'block' : 'none';
+      }
+    }
+
+    function toggleWishlist(item){
+      const items = getWishlist();
+      const existing = items.find(i => i.id === item.id);
+      if(existing){
+        saveWishlist(items.filter(i => i.id !== item.id));
+        return false;
+      }
+      items.push(item);
+      saveWishlist(items);
+      return true;
+    }
+
+    function syncWishButtons(){
+      const items = getWishlist();
+      document.querySelectorAll('.wish-btn').forEach(btn => {
+        btn.classList.toggle('active', items.some(i => i.id === btn.dataset.id));
+        btn.textContent = items.some(i => i.id === btn.dataset.id) ? '❤' : '♡';
+      });
+    }
+
+
+    function setupWishlistButtons(){
+      document.querySelectorAll('.card').forEach(card => {
+        if(card.querySelector('.wish-btn')) return;
+        const nameEl = card.querySelector('.card-body h3');
+        const priceEl = card.querySelector('.price');
+        const imgEl = card.querySelector('img');
+        if(!nameEl || !priceEl) return;
+        const name = nameEl.textContent.trim();
+        const price = priceEl.textContent.trim();
+        const img = imgEl ? imgEl.getAttribute('src') : '';
+        const id = `${name}-${price}`.replace(/\s+/g,'-').toLowerCase();
+
+        const btn = document.createElement('button');
+        btn.className = 'wish-btn';
+        btn.type = 'button';
+        btn.dataset.id = id;
+        btn.title = 'Wishlist';
+        btn.textContent = '♡';
+        btn.addEventListener('click', () => {
+          const added = toggleWishlist({ id, name, price, img });
+          btn.classList.toggle('active', added);
+          btn.textContent = added ? '❤' : '♡';
+        });
+        card.appendChild(btn);
+
+      });
+      syncWishButtons();
+    }
+
+    async function api(path, options){
+      const res = await fetch(`${API_BASE}${path}`, {
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+        ...options
+      });
+      const data = await res.json().catch(() => ({}));
+      if(!res.ok){
+        throw new Error(data.error || 'Request failed');
+      }
+      return data;
+    }
+
+    accountBtn.addEventListener('click', () => {
+      toggleMenu();
+    });
+
+    closeModal.addEventListener('click', closeModalFn);
+    accountModal.addEventListener('click', (e) => {
+      if(e.target === accountModal) closeModalFn();
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!accountMenu.contains(e.target) && !accountBtn.contains(e.target)){
+        toggleMenu(false);
+      }
+    });
+
+    tabs.forEach(tab => tab.addEventListener('click', () => setTab(tab.dataset.tab)));
+
+    menuLogin.addEventListener('click', () => {
+      toggleMenu(false);
+      setTab('login');
+      openModal();
+    });
+
+    menuSignup.addEventListener('click', () => {
+      toggleMenu(false);
+      setTab('signup');
+      openModal();
+    });
+
+    menuLogout.addEventListener('click', async () => {
+      try{
+        await api('/api/logout', { method: 'POST' });
+        setAccountUI(null);
+        toggleMenu(false);
+      }catch(e){
+        alert(e.message);
+      }
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = document.getElementById('login-password').value.trim();
+      try{
+        const data = await api('/api/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, password })
+        });
+        setAccountUI(data.user);
+        closeModalFn();
+      }catch(err){
+        alert(err.message);
+      }
+    });
+
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const password = document.getElementById('signup-password').value.trim();
+      try{
+        const data = await api('/api/signup', {
+          method: 'POST',
+          body: JSON.stringify({ name, email, password })
+        });
+        setAccountUI(data.user);
+        closeModalFn();
+      }catch(err){
+        alert(err.message);
+      }
+    });
+
+    document.getElementById('google-login').addEventListener('click', () => {
+      alert('Google sign-in is not configured in this demo backend.');
+    });
+
+    document.getElementById('google-signup').addEventListener('click', () => {
+      alert('Google sign-in is not configured in this demo backend.');
+    });
+
+    function setupSearch(){
+      const input = document.querySelector('.search input');
+      if(!input) return;
+      const icon = document.querySelector('.search span');
+      if(icon){
+        icon.addEventListener('click', () => input.focus());
+      }
+      const items = [];
+      document.querySelectorAll('.card').forEach(card => {
+        const title = card.querySelector('.card-body h3');
+        if(title){
+          items.push({ card, text: title.textContent.toLowerCase() });
+        }
+      });
+      input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        items.forEach(item => {
+          item.card.style.display = !q || item.text.includes(q) ? '' : 'none';
+        });
+      });
+    }
+
+    setupWishlistButtons();
+    saveWishlist(getWishlist());
+    setupSearch();
+    api('/api/me').then(data => setAccountUI(data.user)).catch(() => setAccountUI(null));
+  </script>
+</body>
+</html>
